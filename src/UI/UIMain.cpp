@@ -1544,9 +1544,9 @@ namespace UI
 												OpenAnimationReplacer::GetSingleton().ClearAllConditionStateData();
 											}
 										} else {
-												UICommon::TextUnformattedDisabled(_T("Variant Mode:"));
+											UICommon::TextUnformattedDisabled(_T("Variant Mode:"));
 											ImGui::SameLine();
-												ImGui::TextUnformatted(variantMode == VariantMode::kRandom ? _T("Random") : _T("Sequential"));
+											ImGui::TextUnformatted(variantMode == VariantMode::kRandom ? _T("Random") : _T("Sequential"));
 										}
 									}
 
@@ -1597,8 +1597,8 @@ namespace UI
 											}
 										} else {
 											const auto scopeText = std::string(_T("Variant state scope: ")) + getScopeName(variantScope);
-				ImGui::TextUnformatted(scopeText.data());
-				UICommon::AddTooltip(getScopeTooltip(variantScope));
+											ImGui::TextUnformatted(scopeText.data());
+											UICommon::AddTooltip(getScopeTooltip(variantScope));
 										}
 									}
 
@@ -1825,17 +1825,17 @@ namespace UI
 				std::string helpMarkerText;
 				switch (a_functionSetType) {
 				case Functions::FunctionSetType::kOnActivate:
-				functionsTreeNodeLabel = std::string(_T("On Activate")) + "##";
-				helpMarkerText = _T("Functions from this set will run when an animation from this submod starts.");
-				break;
-			case Functions::FunctionSetType::kOnDeactivate:
-				functionsTreeNodeLabel = std::string(_T("On Deactivate")) + "##";
-				helpMarkerText = _T("Functions from this set will run when an animation from this submod ends.");
-				break;
-			case Functions::FunctionSetType::kOnTrigger:
-				functionsTreeNodeLabel = std::string(_T("On Trigger")) + "##";
-				helpMarkerText = _T("Functions from this set will run when a specified animation event is called while an animation from this submod is playing.");
-				break;
+					functionsTreeNodeLabel = std::string(_T("On Activate")) + "##";
+					helpMarkerText = _T("Functions from this set will run when an animation from this submod starts.");
+					break;
+				case Functions::FunctionSetType::kOnDeactivate:
+					functionsTreeNodeLabel = std::string(_T("On Deactivate")) + "##";
+					helpMarkerText = _T("Functions from this set will run when an animation from this submod ends.");
+					break;
+				case Functions::FunctionSetType::kOnTrigger:
+					functionsTreeNodeLabel = std::string(_T("On Trigger")) + "##";
+					helpMarkerText = _T("Functions from this set will run when a specified animation event is called while an animation from this submod is playing.");
+					break;
 				}
 
 				ImGuiTreeNodeFlags_ treeNodeFlags = a_subMod->GetFunctionSet(a_functionSetType) ? ImGuiTreeNodeFlags_DefaultOpen : ImGuiTreeNodeFlags_None;
@@ -1949,8 +1949,8 @@ namespace UI
 		static char animPathFilterBuf[32] = "";
 		ImGui::SetNextItemWidth(ImGui::GetFontSize() * 18);
 		ImGui::InputTextWithHint(_T("Filter"), _T("Animation name..."), animPathFilterBuf, IM_ARRAYSIZE(animPathFilterBuf));
-	ImGui::SameLine();
-	UICommon::HelpMarker(_T("Type a part of an animation path to filter the list of replacement animations."));
+		ImGui::SameLine();
+		UICommon::HelpMarker(_T("Type a part of an animation path to filter the list of replacement animations."));
 
 		ImGui::Separator();
 
@@ -2024,7 +2024,7 @@ namespace UI
 			}
 		}
 
-			const std::string nodeName = std::format("{}: {}##{}", _T("Priority"), std::to_string(a_replacementAnimation->GetPriority()), reinterpret_cast<uintptr_t>(a_replacementAnimation));
+		const std::string nodeName = std::format("{}: {}##{}", _T("Priority"), std::to_string(a_replacementAnimation->GetPriority()), reinterpret_cast<uintptr_t>(a_replacementAnimation));
 
 		const bool bAnimationDisabled = a_replacementAnimation->IsDisabled();
 		if (bAnimationDisabled) {
@@ -2081,11 +2081,11 @@ namespace UI
 					}
 
 					UICommon::TextUnformattedDisabled(_T("Weight:"));
-				ImGui::SameLine();
-				ImGui::TextUnformatted(std::format("{}", a_variant.GetWeight()).data());
-				UICommon::AddTooltip(_T("The weight of this variant used for the weighted random selection (e.g. a variant with a weight of 2 will be twice as likely to be picked than a variant with a weight of 1)"));
-				ImGui::SameLine();
-				UICommon::TextUnformattedDisabled(_T("Filename:"));
+					ImGui::SameLine();
+					ImGui::TextUnformatted(std::format("{}", a_variant.GetWeight()).data());
+					UICommon::AddTooltip(_T("The weight of this variant used for the weighted random selection (e.g. a variant with a weight of 2 will be twice as likely to be picked than a variant with a weight of 1)"));
+					ImGui::SameLine();
+					UICommon::TextUnformattedDisabled(_T("Filename:"));
 
 					bIsPreviewing = IsPreviewingAnimation(refrToEvaluate, a_replacementAnimation, a_variant.GetIndex());
 
@@ -2216,7 +2216,7 @@ namespace UI
 				// Clear conditions button
 				ImGui::BeginDisabled(a_conditionSet->IsEmpty());
 				UICommon::ButtonWithConfirmationModal(
-				_T("Clear condition set"), _T("Are you sure you want to clear the condition set?\nThis operation cannot be undone!\n\n"), [&]() {
+					_T("Clear condition set"), _T("Are you sure you want to clear the condition set?\nThis operation cannot be undone!\n\n"), [&]() {
 						ImGui::ClosePopupsExceptModals();
 						OpenAnimationReplacer::GetSingleton().QueueJob<Jobs::ClearConditionSetJob>(a_conditionSet);
 						bSetDirty = true;
@@ -2323,7 +2323,7 @@ namespace UI
 				// Clear functions button
 				ImGui::BeginDisabled(!a_functionSet || a_functionSet->IsEmpty());
 				UICommon::ButtonWithConfirmationModal(
-				_T("Clear function set"), _T("Are you sure you want to clear the function set?\nThis operation cannot be undone!\n\n"), [&]() {
+					_T("Clear function set"), _T("Are you sure you want to clear the function set?\nThis operation cannot be undone!\n\n"), [&]() {
 						ImGui::ClosePopupsExceptModals();
 						OpenAnimationReplacer::GetSingleton().QueueJob<Jobs::ClearFunctionSetJob>(a_functionSet);
 						bSetDirty = true;
@@ -2447,7 +2447,7 @@ namespace UI
 
 					// delete button
 					UICommon::ButtonWithConfirmationModal(
-					_T("Delete condition"), _T("Are you sure you want to remove the condition?\nThis operation cannot be undone!\n\n"), [&]() {
+						_T("Delete condition"), _T("Are you sure you want to remove the condition?\nThis operation cannot be undone!\n\n"), [&]() {
 							ImGui::ClosePopupsExceptModals();
 							OpenAnimationReplacer::GetSingleton().QueueJob<Jobs::RemoveConditionJob>(a_condition, a_conditionSet);
 							a_bOutSetDirty = true;
@@ -2641,17 +2641,17 @@ namespace UI
 								currentEnumName = search->second;
 							} else {
 								currentEnumName = std::string(_T("Unknown")) + " (" + std::to_string(static_cast<uint8_t>(currentValue)) + ")";
-			}
+							}
 
-			if (ImGui::BeginCombo(idString.data(), currentEnumName.data())) {
-				for (auto& [enumValue, enumName] : enumMap) {
-					const bool bIsCurrent = enumValue == currentValue;
-					if (ImGui::Selectable(_T(enumName.data()), bIsCurrent)) {
-						if (!bIsCurrent) {
-							currentValue = enumValue;
-							a_condition->SetEssential(currentValue);
-							a_conditionSet->SetDirty(true);
-							a_bOutSetDirty = true;
+							if (ImGui::BeginCombo(idString.data(), currentEnumName.data())) {
+								for (auto& [enumValue, enumName] : enumMap) {
+									const bool bIsCurrent = enumValue == currentValue;
+									if (ImGui::Selectable(_T(enumName.data()), bIsCurrent)) {
+										if (!bIsCurrent) {
+											currentValue = enumValue;
+											a_condition->SetEssential(currentValue);
+											a_conditionSet->SetDirty(true);
+											a_bOutSetDirty = true;
 										}
 									}
 									if (bIsCurrent) {
@@ -2854,7 +2854,7 @@ namespace UI
 
 					// delete button
 					UICommon::ButtonWithConfirmationModal(
-					_T("Delete function"), _T("Are you sure you want to remove the function?\nThis operation cannot be undone!\n\n"), [&]() {
+						_T("Delete function"), _T("Are you sure you want to remove the function?\nThis operation cannot be undone!\n\n"), [&]() {
 							ImGui::ClosePopupsExceptModals();
 							OpenAnimationReplacer::GetSingleton().QueueJob<Jobs::RemoveFunctionJob>(a_function, a_functionSet);
 							a_bOutSetDirty = true;
@@ -3032,17 +3032,17 @@ namespace UI
 								currentEnumName = search->second;
 							} else {
 								currentEnumName = std::string(_T("Unknown")) + " (" + std::to_string(static_cast<uint8_t>(currentValue)) + ")";
-			}
+							}
 
-			if (ImGui::BeginCombo(idString.data(), currentEnumName.data())) {
-				for (auto& [enumValue, enumName] : enumMap) {
-					const bool bIsCurrent = enumValue == currentValue;
-					if (ImGui::Selectable(_T(enumName.data()), bIsCurrent)) {
-						if (!bIsCurrent) {
-							currentValue = enumValue;
-							a_function->SetEssential(currentValue);
-							a_functionSet->SetDirty(true);
-							a_bOutSetDirty = true;
+							if (ImGui::BeginCombo(idString.data(), currentEnumName.data())) {
+								for (auto& [enumValue, enumName] : enumMap) {
+									const bool bIsCurrent = enumValue == currentValue;
+									if (ImGui::Selectable(_T(enumName.data()), bIsCurrent)) {
+										if (!bIsCurrent) {
+											currentValue = enumValue;
+											a_function->SetEssential(currentValue);
+											a_functionSet->SetDirty(true);
+											a_bOutSetDirty = true;
 										}
 									}
 									if (bIsCurrent) {
@@ -3116,7 +3116,7 @@ namespace UI
 					std::string triggersLabel = std::string(_T("Triggers")) + "##" + std::to_string(reinterpret_cast<uintptr_t>(a_function.get()));
 					bool bIsOpen = ImGui::CollapsingHeader(triggersLabel.data(), ImGuiTreeNodeFlags_DefaultOpen);
 					ImGui::SameLine();
-						UICommon::HelpMarker(_T("Animation events with an optional payload that will trigger this function."));
+					UICommon::HelpMarker(_T("Animation events with an optional payload that will trigger this function."));
 					if (bIsOpen) {
 						ImGui::Indent();
 						uint32_t i = 0;
@@ -3127,10 +3127,10 @@ namespace UI
 								ImGui::SameLine(0.f, 0.f);
 								ImGui::PushStyleColor(ImGuiCol_Text, UICommon::EVENT_LOG_PAYLOAD_COLOR);
 								ImGui::TextUnformatted(_T("."));
-							ImGui::SameLine(0.f, 0.f);
-							UICommon::TextUnformattedEllipsis(a_trigger.payload.data());
-							ImGui::PopStyleColor();
-						}
+								ImGui::SameLine(0.f, 0.f);
+								UICommon::TextUnformattedEllipsis(a_trigger.payload.data());
+								ImGui::PopStyleColor();
+							}
 
 							// remove trigger button
 							UICommon::SecondColumn(_firstColumnWidthPercent);
@@ -3157,10 +3157,10 @@ namespace UI
 								static std::string eventBuffer;
 								static std::string payloadBuffer;
 								ImGui::InputTextWithHint("##NewTriggerEvent", _T("Event name"), &eventBuffer, ImGuiInputTextFlags_CharsNoBlank);
-							ImGui::SameLine();
-							ImGui::TextUnformatted(_T("."));
-							ImGui::SameLine();
-							ImGui::InputTextWithHint("##NewTriggerPayload", _T("Payload (optional)"), &payloadBuffer, ImGuiInputTextFlags_CharsNoBlank);
+								ImGui::SameLine();
+								ImGui::TextUnformatted(_T("."));
+								ImGui::SameLine();
+								ImGui::InputTextWithHint("##NewTriggerPayload", _T("Payload (optional)"), &payloadBuffer, ImGuiInputTextFlags_CharsNoBlank);
 								std::string addButtonLabel = std::string(_T("Add trigger")) + "##" + std::to_string(reinterpret_cast<uintptr_t>(a_function.get()));
 								ImGui::BeginDisabled(eventBuffer.empty());
 								if (ImGui::Button(addButtonLabel.data())) {
@@ -3176,15 +3176,15 @@ namespace UI
 								ImGui::SetItemDefaultFocus();
 								ImGui::SameLine();
 								if (ImGui::Button(_T("Cancel"))) {
-								eventBuffer.clear();
-								payloadBuffer.clear();
-								ImGui::CloseCurrentPopup();
+									eventBuffer.clear();
+									payloadBuffer.clear();
+									ImGui::CloseCurrentPopup();
+								}
+								ImGui::EndPopup();
 							}
-							ImGui::EndPopup();
 						}
-					}
 
-					ImGui::Unindent();
+						ImGui::Unindent();
 					}
 				}
 
@@ -3393,7 +3393,7 @@ namespace UI
 					const auto& style = ImGui::GetStyle();
 					const auto xButtonSize = ImGui::CalcTextSize(buttonText.data()).x + style.FramePadding.x * 2 + style.ItemSpacing.x;
 					UICommon::ButtonWithConfirmationModal(
-					buttonText, _T("Are you sure you want to remove this condition preset?\nThis operation cannot be undone!\n\n"), [&]() {
+						buttonText, _T("Are you sure you want to remove this condition preset?\nThis operation cannot be undone!\n\n"), [&]() {
 							ImGui::ClosePopupsExceptModals();
 							OpenAnimationReplacer::GetSingleton().QueueJob<Jobs::RemoveConditionPresetJob>(a_replacerMod, a_conditionPreset->GetName());
 							setDirtyOnContainingSubMods(a_conditionPreset);
@@ -3496,7 +3496,7 @@ namespace UI
 					UICommon::TextUnformattedDisabled(a_info.requiredVersion.string("."sv).data());
 					if (!a_info.requiredPluginAuthor.empty()) {
 						ImGui::SameLine();
-					ImGui::TextUnformatted(_T("by"));
+						ImGui::TextUnformatted(_T("by"));
 						ImGui::SameLine();
 						UICommon::TextUnformattedColored(a_info.textColor, a_info.requiredPluginAuthor.data());
 					}
@@ -3567,14 +3567,14 @@ namespace UI
 		const auto& style = ImGui::GetStyle();
 
 		if (a_bIsPreviewing) {
-		return ImGui::CalcTextSize(_T("Stop")).x + style.FramePadding.x * 2 + style.ItemSpacing.x;
-	}
+			return ImGui::CalcTextSize(_T("Stop")).x + style.FramePadding.x * 2 + style.ItemSpacing.x;
+		}
 
-	if (a_replacementAnimation->IsSynchronizedAnimation()) {
-		return (ImGui::CalcTextSize(_T("Preview source")).x + style.FramePadding.x * 2 + style.ItemSpacing.x) + (ImGui::CalcTextSize(_T("Preview target")).x + style.FramePadding.x * 2 + style.ItemSpacing.x);
-	}
+		if (a_replacementAnimation->IsSynchronizedAnimation()) {
+			return (ImGui::CalcTextSize(_T("Preview source")).x + style.FramePadding.x * 2 + style.ItemSpacing.x) + (ImGui::CalcTextSize(_T("Preview target")).x + style.FramePadding.x * 2 + style.ItemSpacing.x);
+		}
 
-	return (ImGui::CalcTextSize(_T("Preview")).x + style.FramePadding.x * 2 + style.ItemSpacing.x);
+		return (ImGui::CalcTextSize(_T("Preview")).x + style.FramePadding.x * 2 + style.ItemSpacing.x);
 	}
 
 	void UIMain::DrawPreviewButtons(RE::TESObjectREFR* a_refr, const ReplacementAnimation* a_replacementAnimation, float a_previewButtonWidth, bool a_bCanPreview, bool a_bIsPreviewing, Variant* a_variant)

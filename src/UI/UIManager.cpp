@@ -58,12 +58,18 @@ namespace UI
 					}
 					if (!fontPath.empty()) {
 						static const ImWchar ranges[] = {
-							0x0020, 0x00FF,
-							0x2000, 0x206F,
-							0x3000, 0x30FF,
-							0x31F0, 0x31FF,
-							0xFF00, 0xFFEF,
-							0x4E00, 0x9FFF,
+							0x0020,
+							0x00FF,
+							0x2000,
+							0x206F,
+							0x3000,
+							0x30FF,
+							0x31F0,
+							0x31FF,
+							0xFF00,
+							0xFFEF,
+							0x4E00,
+							0x9FFF,
 							0,
 						};
 						io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 14.0f, nullptr, ranges);
@@ -610,7 +616,7 @@ namespace UI
 		return false;
 	}
 
-	const std::uint32_t(& UIManager::GetAlternativeKeyData() const noexcept)[4]
+	const std::uint32_t (&UIManager::GetAlternativeKeyData() const noexcept)[4]
 	{
 		return _alternativeKeyData;
 	}
