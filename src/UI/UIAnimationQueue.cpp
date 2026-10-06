@@ -49,11 +49,11 @@ namespace UI
 		ImGui::SetNextWindowBgAlpha(0.25f);
 		ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
 		if (ImGui::Begin("AnimationQueue", nullptr, windowFlags)) {
-			static constexpr auto TEXT = "Loading animations..."sv;
+			const auto TEXT = _T("Loading animations...");
 			const auto windowWidth = ImGui::GetWindowSize().x;
-			const auto titleTextWidth = ImGui::CalcTextSize(TEXT.data()).x;
+			const auto titleTextWidth = ImGui::CalcTextSize(TEXT).x;
 			ImGui::SetCursorPosX((windowWidth - titleTextWidth) * 0.5f);
-			ImGui::TextUnformatted(TEXT.data());
+			ImGui::TextUnformatted(TEXT);
 			ImGui::ProgressBar(queuePercent, ImVec2(200, 0), queuePercentStr.data());
 		}
 		ImGui::PopStyleVar();

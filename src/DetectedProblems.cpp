@@ -181,26 +181,26 @@ DetectedProblems::Severity DetectedProblems::GetProblemSeverity() const
 std::string_view DetectedProblems::GetProblemMessage() const
 {
 	if (IsOutdated()) {
-		return "ERROR: Required newer Open Animation Replacer version! Click for details..."sv;
+		return _T("ERROR: Required newer Open Animation Replacer version! Click for details...");
 	}
 
 	if (HasMissingPlugins()) {
-		return "ERROR: Missing required Open Animation Replacer plugins! Click for details..."sv;
+		return _T("ERROR: Missing required Open Animation Replacer plugins! Click for details...");
 	}
 
 	if (HasInvalidPlugins()) {
-		return "ERROR: At least one Open Animation Replacer plugin failed to initialize properly! Click for details..."sv;
+		return _T("ERROR: At least one Open Animation Replacer plugin failed to initialize properly! Click for details...");
 	}
 
 	if (HasSubModsWithInvalidEntries() || HasReplacerModsWithInvalidEntries()) {
-		return "ERROR: Detected mods with invalid conditions! Click for details..."sv;
+		return _T("ERROR: Detected mods with invalid conditions! Click for details...");
 	}
 
 	if (HasSubModsSharingPriority()) {
-		return "WARNING: Detected mods sharing the same priority. Click for details..."sv;
+		return _T("WARNING: Detected mods sharing the same priority. Click for details...");
 	}
 
-	return "No problems detected."sv;
+	return _T("No problems detected.");
 }
 
 void DetectedProblems::ForEachMissingPlugin(const std::function<void(const std::pair<std::string, REL::Version>&)>& a_func) const

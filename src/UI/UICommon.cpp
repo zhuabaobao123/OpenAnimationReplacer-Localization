@@ -277,7 +277,7 @@ namespace UI::UICommon
 				OpenPopup(popupName.data());
 			}
 		}
-		AddTooltip("Hold CTRL to skip the confirmation popup");
+		AddTooltip(_T("Hold CTRL to skip the confirmation popup"));
 
 		if (BeginPopupModal(popupName.data(), nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
 			Text(a_confirmation.data());
@@ -286,13 +286,13 @@ namespace UI::UICommon
 			constexpr float buttonWidth = 120.f;
 			SetCursorPosX((GetWindowSize().x - (buttonWidth * 2.f) - GetStyle().ItemSpacing.x) * 0.5f);
 
-			if (Button("OK", ImVec2(buttonWidth, 0))) {
+			if (Button(_T("OK"), ImVec2(buttonWidth, 0))) {
 				CloseCurrentPopup();
 				a_func();
 			}
 			SetItemDefaultFocus();
 			SameLine();
-			if (Button("Cancel", ImVec2(buttonWidth, 0))) {
+			if (Button(_T("Cancel"), ImVec2(buttonWidth, 0))) {
 				CloseCurrentPopup();
 			}
 			EndPopup();
@@ -530,14 +530,15 @@ namespace UI::UICommon
 
 		const LANGID language = LOWORD(GetKeyboardLayout(0));
 
-		return ((language & 0xFF) == LANG_GERMAN) ?
-		           keyboard_keys_german[key] :
-		           keyboard_keys_international[key];
+		const char* rawName = ((language & 0xFF) == LANG_GERMAN) ?
+		                          keyboard_keys_german[key] :
+		                          keyboard_keys_international[key];
+		return _T(rawName);
 	}
 
 	std::string GetKeyName(const uint32_t a_key[4])
 	{
-		return (a_key[1] ? "Ctrl + " : std::string()) + (a_key[2] ? "Shift + " : std::string()) + (a_key[3] ? "Alt + " : std::string()) + GetKeyName(a_key[0]);
+		return (a_key[1] ? std::string(_T("Ctrl + ")) : std::string()) + (a_key[2] ? std::string(_T("Shift + ")) : std::string()) + (a_key[3] ? std::string(_T("Alt + ")) : std::string()) + GetKeyName(a_key[0]);
 	}
 
 	bool InputKey(const char* a_label, uint32_t a_key[4])
@@ -548,7 +549,7 @@ namespace UI::UICommon
 		if (a_key[0] || a_key[1] || a_key[2] || a_key[3]) {
 			buf[GetKeyName(a_key).copy(buf, sizeof(buf) - 1)] = '\0';
 		}
-		ImGui::InputTextWithHint(a_label, "Click to set keyboard shortcut", buf, sizeof(buf), ImGuiInputTextFlags_ReadOnly | ImGuiInputTextFlags_NoUndoRedo | ImGuiInputTextFlags_NoHorizontalScroll);
+		ImGui::InputTextWithHint(a_label, _T("Click to set keyboard shortcut"), buf, sizeof(buf), ImGuiInputTextFlags_ReadOnly | ImGuiInputTextFlags_NoUndoRedo | ImGuiInputTextFlags_NoHorizontalScroll);
 
 		if (ImGui::IsItemActive()) {
 			const auto lastKeyPressed = UIManager::GetSingleton().GetLastKeyPressed();
@@ -570,7 +571,7 @@ namespace UI::UICommon
 				}
 			}
 		} else {
-			AddTooltip("Click in the field and press any key to change the shortcut to that key.");
+			AddTooltip(_T("Click in the field and press any key to change the shortcut to that key."));
 		}
 
 		return ret;

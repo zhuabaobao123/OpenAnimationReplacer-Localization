@@ -9,6 +9,7 @@
 #include "UIWelcomeBanner.h"
 #include <dinput.h>
 #include <dxgi.h>
+#include <filesystem>
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
 
@@ -39,6 +40,38 @@ namespace UI
 		ImGui::CreateContext();
 
 		auto& io = ImGui::GetIO();
+
+		// load custom font from SKSE/Plugins/OpenAnimationReplacer/fonts
+		REX::W32::HMODULE dllHandle = REX::W32::GetModuleHandleW(L"OpenAnimationReplacer.dll");
+		if (dllHandle) {
+			wchar_t dllPath[MAX_PATH];
+			if (REX::W32::GetModuleFileNameW(dllHandle, dllPath, MAX_PATH) > 0) {
+				std::filesystem::path fontsDir = std::filesystem::path(dllPath).parent_path() / "OpenAnimationReplacer" / "fonts";
+				if (std::filesystem::exists(fontsDir)) {
+					// load first font file found
+					std::string fontPath;
+					for (const auto& entry : std::filesystem::directory_iterator(fontsDir)) {
+						if (entry.path().extension() == ".ttf" || entry.path().extension() == ".otf") {
+							fontPath = entry.path().string();
+							break;
+						}
+					}
+					if (!fontPath.empty()) {
+						static const ImWchar ranges[] = {
+							0x0020, 0x00FF,
+							0x2000, 0x206F,
+							0x3000, 0x30FF,
+							0x31F0, 0x31FF,
+							0xFF00, 0xFFEF,
+							0x4E00, 0x9FFF,
+							0,
+						};
+						io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 14.0f, nullptr, ranges);
+						logger::info("Loaded font: {}", fontPath);
+					}
+				}
+			}
+		}
 
 		io.DisplaySize = { static_cast<float>(sd.BufferDesc.Width), static_cast<float>(sd.BufferDesc.Height) };
 		io.ConfigWindowsMoveFromTitleBarOnly = true;

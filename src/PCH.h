@@ -208,3 +208,6 @@ using WriteLocker = std::unique_lock<SharedLock>;
 #define DLLEXPORT __declspec(dllexport)
 
 #include "Plugin.h"
+
+#include "Localization.h"
+#define _T(s) Localization::Translate(s)

@@ -27,7 +27,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return _argument.data(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "! INVALID !"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "The condition was not found!"sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("The condition was not found!"); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 0, 0, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return false; }
@@ -77,7 +77,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return _argument.data(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "! DEPRECATED !"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "The condition has been deprecated in the current version of Open Animation Replacer. This submod needs to be updated."; }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("The condition has been deprecated in the current version of Open Animation Replacer. This submod needs to be updated."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 0, 0, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return false; }
@@ -99,7 +99,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionsComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "OR"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if any of the child conditions are true."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if any of the child conditions are true."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -120,7 +120,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionsComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "AND"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if all of the child conditions are true."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if all of the child conditions are true."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -143,7 +143,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "IsForm"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref matches the specified form."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref matches the specified form."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -168,7 +168,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquipped"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified form equipped in the right or left hand."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified form equipped in the right or left hand."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -197,7 +197,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquippedType"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item of the specified type equipped in the right or left hand."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item of the specified type equipped in the right or left hand."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		NumericConditionComponent* numericComponent;
@@ -227,7 +227,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquippedHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item equipped in the right or left hand that has the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item equipped in the right or left hand that has the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -251,7 +251,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquippedPower"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified spell equipped in the power slot."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified spell equipped in the power slot."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -273,7 +273,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "IsWorn"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified form equipped in any slot."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified form equipped in any slot."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -294,7 +294,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return keywordComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "IsWornHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item equipped in any slot that has the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item equipped in any slot that has the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -307,7 +307,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsFemale"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is female."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is female."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -318,7 +318,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsChild"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is a child."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is a child."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -329,7 +329,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsPlayerTeammate"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is a teammate of the player."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is a teammate of the player."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -340,7 +340,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInInterior"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is in an interior cell."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is in an interior cell."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -359,7 +359,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInFaction"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is in the specified faction."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is in the specified faction."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -380,7 +380,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return keywordComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "HasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -402,7 +402,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "HasMagicEffect"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently affected by the specified magic effect."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently affected by the specified magic effect."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -425,7 +425,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "HasMagicEffectWithKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently affected by a magic effect that has the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently affected by a magic effect that has the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -447,7 +447,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "HasPerk"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified perk."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified perk."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -468,7 +468,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "HasSpell"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified spell or shout."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified spell or shout."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -505,7 +505,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CompareValues"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Compares two values."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Compares two values."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		NumericConditionComponent* numericComponentA;
@@ -533,7 +533,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "Level"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's level against the specified value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's level against the specified value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -556,7 +556,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsActorBase"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's actor base form is the specified form."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's actor base form is the specified form."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -579,7 +579,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsRace"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's race is the specified race."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's race is the specified race."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -602,7 +602,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentWeather"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the current weather is the specified weather."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the current weather is the specified weather."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -626,7 +626,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentGameTime"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the current game time against the specified time."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the current game time against the specified time."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -683,7 +683,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "Random"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Compares a random value with a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Compares a random value with a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 		ConditionStateComponent* stateComponent;
@@ -700,7 +700,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsUnique"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is flagged as unique."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is flagged as unique."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -720,7 +720,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsClass"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's class is the specified class."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's class is the specified class."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -743,7 +743,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsCombatStyle"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's combat style is the specified combat style."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's combat style is the specified combat style."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -766,7 +766,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsVoiceType"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's voice type is the specified voice type."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's voice type is the specified voice type."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -780,7 +780,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsAttacking"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is attacking."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is attacking."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -791,7 +791,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsRunning"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is running."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is running."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -802,7 +802,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsSneaking"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is sneaking."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is sneaking."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -813,7 +813,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsSprinting"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is sprinting."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is sprinting."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -824,7 +824,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInAir"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is in the air."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is in the air."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -835,7 +835,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInCombat"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is in combat."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is in combat."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -846,7 +846,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsWeaponDrawn"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has a weapon drawn."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has a weapon drawn."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -866,7 +866,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInLocation"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is in the specified location."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is in the specified location."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -889,7 +889,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "HasRefType"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified LocRefType attached."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified LocRefType attached."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 	protected:
@@ -911,7 +911,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsParentCell"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently in the specified cell."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently in the specified cell."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -933,7 +933,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsWorldSpace"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently in the specified worldspace."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently in the specified worldspace."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -959,7 +959,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "FactionRank"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the ref's faction rank against the specified rank."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the ref's faction rank against the specified rank."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* factionComponent;
@@ -985,7 +985,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsMovementDirection"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is moving in the specified direction."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is moving in the specified direction."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		NumericConditionComponent* numericComponent;
@@ -1011,7 +1011,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquippedShout"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified shout equipped."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified shout equipped."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -1034,7 +1034,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "HasGraphVariable"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has the specified graph variable."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has the specified graph variable."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		TextConditionComponent* textComponent;
@@ -1059,7 +1059,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SubmergeLevel"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the ref's water submerge level (0-1) against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the ref's water submerge level (0-1) against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1084,7 +1084,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsReplacerEnabled"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if there's a replacer submod enabled with the given name. Leave the submod name empty to check if any submods are enabled in the replacer mod."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if there's a replacer submod enabled with the given name. Leave the submod name empty to check if any submods are enabled in the replacer mod."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		TextConditionComponent* textComponentMod;
@@ -1107,7 +1107,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 		[[nodiscard]] RE::BSString GetName() const override { return "IsCurrentPackage"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's currently running the specified package."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's currently running the specified package."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -1131,7 +1131,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsWornInSlotHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item worn in the specified slot that has the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item worn in the specified slot that has the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		NumericConditionComponent* slotComponent;
@@ -1156,7 +1156,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "Scale"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the ref's scale against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the ref's scale against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1179,7 +1179,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "Height"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's height against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's height against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1202,7 +1202,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "Weight"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's weight against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's weight against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1228,7 +1228,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "MovementSpeed"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the ref's movement speed of a given type against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the ref's movement speed of a given type against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		NumericConditionComponent* movementTypeComponent;
@@ -1255,7 +1255,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentMovementSpeed"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the ref's current movement speed against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the ref's current movement speed against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1278,7 +1278,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "WindSpeed"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the current weather's wind speed against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the current weather's wind speed against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1304,7 +1304,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "WindAngleDifference"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the difference between current weather's wind angle and the ref's angle against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the difference between current weather's wind angle and the ref's angle against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1331,7 +1331,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CrimeGold"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's current crime gold against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's current crime gold against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 0, 0 }; }
 
 		FormConditionComponent* factionComponent;
@@ -1346,7 +1346,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsBlocking"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is blocking."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is blocking."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 	protected:
@@ -1367,7 +1367,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsCombatState"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref's current combat state matches the given state."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref's current combat state matches the given state."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		NumericConditionComponent* combatStateComponent;
@@ -1394,7 +1394,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "InventoryCount"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's current inventory count of a specified form against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's current inventory count of a specified form against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -1419,7 +1419,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "FallDistance"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Gets the actor's current fall distance and tests it against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Gets the actor's current fall distance and tests it against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1443,7 +1443,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "FallDamage"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Calculates the actor's fall damage if they landed at this moment and tests it against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Calculates the actor's fall damage if they landed at this moment and tests it against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1468,7 +1468,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentPackageType"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor's current package is of a given type."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor's current package is of a given type."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		NumericConditionComponent* packageTypeComponent;
@@ -1485,7 +1485,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsOnMount"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is riding a mount."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is riding a mount."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 	protected:
@@ -1506,7 +1506,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsRiding"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is riding the specified form."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is riding the specified form."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -1528,7 +1528,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsRidingHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is riding a form with the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is riding a form with the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -1541,7 +1541,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsBeingRidden"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently mounted by someone."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently mounted by someone."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 	protected:
@@ -1562,7 +1562,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsBeingRiddenBy"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently mounted by the specified form."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently mounted by the specified form."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -1586,7 +1586,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentFurniture"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently occupying the specified furniture."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently occupying the specified furniture."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -1610,7 +1610,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentFurnitureHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently occupying furniture with the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently occupying furniture with the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -1643,7 +1643,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "HasTarget"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor has a target of a given type."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor has a target of a given type."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 	protected:
@@ -1663,7 +1663,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentTargetDistance"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the distance to an actor's current target against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the distance to an actor's current target against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1690,7 +1690,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentTargetRelationship"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the relationship between the actor and their current target against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the relationship between the actor and their current target against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 1, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1720,7 +1720,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "EquippedObjectWeight"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the weight of the object currently equipped in the right or left hand against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the weight of the object currently equipped in the right or left hand against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1763,7 +1763,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentCastingType"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor's current casting type of the given casting source is the required type."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor's current casting type of the given casting source is the required type."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		NumericConditionComponent* castingTypeComponent;
@@ -1790,7 +1790,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentDeliveryType"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor's current delivery type of the given casting source is the required type."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor's current delivery type of the given casting source is the required type."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		NumericConditionComponent* deliveryTypeComponent;
@@ -1815,7 +1815,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsQuestStageDone"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the specified stage in the given quest has been completed."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the specified stage in the given quest has been completed."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		FormConditionComponent* questComponent;
@@ -1839,7 +1839,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentWeatherHasFlag"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the current weather has the specified flag enabled."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the current weather has the specified flag enabled."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		NumericConditionComponent* weatherFlagComponent;
@@ -1865,7 +1865,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "InventoryCountHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's current inventory count of all items with a specified keyword against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's current inventory count of all items with a specified keyword against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -1892,7 +1892,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentTargetRelativeAngle"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the relative angle between an actor and their current target."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the relative angle between an actor and their current target."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1918,7 +1918,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentTargetLineOfSight"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor's current target is in their line of sight, or if the actor is in their current target's line of sight."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor's current target is in their line of sight, or if the actor is in their current target's line of sight."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		BoolConditionComponent* boolComponent;
@@ -1942,7 +1942,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CurrentRotationSpeed"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the ref's current rotation speed against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the ref's current rotation speed against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -1956,7 +1956,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsTalking"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is talking either in monologue or in dialogue."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is talking either in monologue or in dialogue."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 	protected:
@@ -1967,7 +1967,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsGreetingPlayer"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is greeting the player."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is greeting the player."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 	protected:
@@ -1978,7 +1978,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInScene"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently in a scene."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently in a scene."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 	protected:
@@ -1997,7 +1997,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsInSpecifiedScene"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is currently in the specified scene."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is currently in the specified scene."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -2017,7 +2017,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsScenePlaying"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if a specific scene is currently playing."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if a specific scene is currently playing."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -2030,7 +2030,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsDoingFavor"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has been asked to do something by the player."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has been asked to do something by the player."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 2, 0 }; }
 
 	protected:
@@ -2052,7 +2052,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "AttackState"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks the actor's attack state."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks the actor's attack state."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 3, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -2079,7 +2079,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsMenuOpen"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if a specific menu is currently open."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if a specific menu is currently open."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 3, 0 }; }
 
 		TextConditionComponent* textComponent;
@@ -2100,7 +2100,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "TARGET"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if all of the child conditions are true, but evaluates them for the current target instead."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if all of the child conditions are true, but evaluates them for the current target instead."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 3, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -2126,7 +2126,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionsComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "PLAYER"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if all of the child conditions are true, but evaluates them for the player instead."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if all of the child conditions are true, but evaluates them for the player instead."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 1, 3, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -2154,7 +2154,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "LightLevel"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the current strength of lighting on this ref against the specified value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the current strength of lighting on this ref against the specified value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 0, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -2176,7 +2176,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "LocationHasKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the current location has the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the current location has the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 0, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -2200,7 +2200,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "LifeState"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks the actor's life state."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks the actor's life state."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 1, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -2230,7 +2230,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SitSleepState"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks the actor's sit/sleep state."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks the actor's sit/sleep state."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 1, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -2255,7 +2255,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionsComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "XOR"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if only one of the child conditions is true (Exclusive OR)."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if only one of the child conditions is true (Exclusive OR)."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 1, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -2276,7 +2276,7 @@ namespace Conditions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionsComponent->GetArgument(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "PRESET"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Evaluate a condition preset defined in the replacer mod in place of this condition. Useful if you want to reuse the same set of conditions in multiple submods.\n\nManage condition presets in the replacer mod and don't forget to save the config!"sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Evaluate a condition preset defined in the replacer mod in place of this condition. Useful if you want to reuse the same set of conditions in multiple submods.\n\nManage condition presets in the replacer mod and don't forget to save the config!"); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -2300,7 +2300,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionsComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "MOUNT"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if all of the child conditions are true, but evaluates them for the mount instead."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if all of the child conditions are true, but evaluates them for the mount instead."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return conditionsComponent->IsValid(); }
@@ -2325,7 +2325,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsAttackTypeKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the performed attack type is equal to the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the performed attack type is equal to the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -2350,7 +2350,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsAttackTypeFlag"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the performed attack has the specified flag enabled."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the performed attack has the specified flag enabled."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 		NumericConditionComponent* attackFlagComponent;
@@ -2416,7 +2416,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "MovementSurfaceAngle"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the angle of the surface that the ref is walking on against a numeric value.\nThe angle is calculated by comparing the surface's normal vector and the ref's forward vector."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the angle of the surface that the ref is walking on against a numeric value.\nThe angle is calculated by comparing the surface's normal vector and the ref's forward vector."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 		float GetSmoothingFactor(RE::TESObjectREFR* a_refr) const { return smoothingFactorComponent->GetNumericValue(a_refr); }
@@ -2438,7 +2438,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "LocationCleared"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the current location is cleared."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the current location is cleared."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 	protected:
@@ -2449,7 +2449,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsSummoned"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is a summoned creature."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is a summoned creature."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 	protected:
@@ -2470,7 +2470,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquippedHasEnchantment"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item equipped in the right or left hand that has the specified enchantment."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item equipped in the right or left hand that has the specified enchantment."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -2495,7 +2495,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsEquippedHasEnchantmentWithKeyword"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item equipped in the right or left hand that has an enchantment with the specified keyword."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item equipped in the right or left hand that has an enchantment with the specified keyword."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 2, 0 }; }
 
 		KeywordConditionComponent* keywordComponent;
@@ -2510,7 +2510,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsOnStairs"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is on stairs. Keep in mind that not all stairs in the game are marked as such."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is on stairs. Keep in mind that not all stairs in the game are marked as such."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 	protected:
@@ -2531,7 +2531,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SurfaceMaterial"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the surface the ref is standing on has a specified material ID."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the surface the ref is standing on has a specified material ID."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 		NumericConditionComponent* numericComponent;
@@ -2550,7 +2550,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsOverEncumbered"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is over-encumbered."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is over-encumbered."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 	protected:
@@ -2561,7 +2561,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsTrespassing"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is trespassing."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is trespassing."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 	protected:
@@ -2572,7 +2572,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsGuard"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is a guard."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is a guard."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 	protected:
@@ -2583,7 +2583,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsCrimeSearching"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is searching for a criminal."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is searching for a criminal."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 	protected:
@@ -2594,7 +2594,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsCombatSearching"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is searching for a target in combat."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is searching for a target in combat."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 	protected:
@@ -2636,7 +2636,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IdleTime"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Compares the time the actor has spent idling with a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Compares the time the actor has spent idling with a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 2, 3, 0 }; }
 
 		ComparisonConditionComponent* comparisonComponent;
@@ -2658,7 +2658,7 @@ namespace Conditions
 		}
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsAboveWater"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor is above water - as in, if it fell straight down, it'd hit water."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor is above water - as in, if it fell straight down, it'd hit water."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		NumericConditionComponent* distanceNumericComponent;
@@ -2683,7 +2683,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "MagicEffectElapsedTime"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Compares the time the ref has been affected by the specified magic effect with a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Compares the time the ref has been affected by the specified magic effect with a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		FormConditionComponent* formComponent;
@@ -2708,7 +2708,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "IsWornInSlot"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has an item worn in the specified slot."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has an item worn in the specified slot."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		NumericConditionComponent* slotComponent;
@@ -2733,7 +2733,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetCurrent(RE::TESObjectREFR* a_refr) const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "InventoryWeight"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Tests the actor's total inventory weight, or the current encumbrance percentage, against a numeric value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Tests the actor's total inventory weight, or the current encumbrance percentage, against a numeric value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		BoolConditionComponent* boolComponent;
@@ -2749,7 +2749,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsGhost"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref is in the ghost (invulnerable) state. Not related to in-game ghosts."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref is in the ghost (invulnerable) state. Not related to in-game ghosts."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 	protected:
@@ -2760,7 +2760,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsSwimming"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor is swimming."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor is swimming."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 	protected:
@@ -2771,7 +2771,7 @@ namespace Conditions
 	{
 	public:
 		[[nodiscard]] RE::BSString GetName() const override { return "IsStaggered"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor is staggered."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor is staggered."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 1, 0 }; }
 
 	protected:
@@ -2791,7 +2791,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CastingSpell"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the actor is currently casting a spell with the specified casting source."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the actor is currently casting a spell with the specified casting source."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 1, 0 }; }
 
 		NumericConditionComponent* castingSourceComponent;
@@ -2813,7 +2813,7 @@ namespace Conditions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "HasBoundWeaponEquipped"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Checks if the ref has a bound weapon equipped in the right or left hand."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Checks if the ref has a bound weapon equipped in the right or left hand."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 2, 0 }; }
 
 		BoolConditionComponent* boolComponent;

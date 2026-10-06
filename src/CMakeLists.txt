@@ -57,6 +57,8 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 
 			"/bigobj"	# Increase Number of Sections in .obj file
 
+			"/FS"	# Force Synchronous PDB Writes
+
 			"$<$<CONFIG:DEBUG>:>"
 			"$<$<CONFIG:RELEASE>:/Zc:inline;/JMC-;/Ob3>"
 	)

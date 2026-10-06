@@ -21,7 +21,7 @@ namespace Functions
 
 		[[nodiscard]] RE::BSString GetArgument() const override { return _argument.data(); }
 		[[nodiscard]] RE::BSString GetName() const override { return "! INVALID !"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "The function was not found!"sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("The function was not found!"); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 0, 0, 0 }; }
 
 		[[nodiscard]] bool IsValid() const override { return false; }
@@ -70,7 +70,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return conditionComponent->GetArgument(); };
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CONDITION"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Run a set of functions only if the specified conditions evaluate to true."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Run a set of functions only if the specified conditions evaluate to true."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		ConditionFunctionComponent* conditionComponent;
@@ -118,7 +118,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return randomFunctionComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "RANDOM"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Runs one random function from the contained function set."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Runs one random function from the contained function set."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		RANDOMFunctionComponent* randomFunctionComponent;
@@ -138,7 +138,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return multiFunctionComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "ONE"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Attempts to run functions from the contained function set in top-down order, until the first one succeeds. Mostly intended to be used with CONDITION functions inside, or other functions that contain an internal check before running."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Attempts to run functions from the contained function set in top-down order, until the first one succeeds. Mostly intended to be used with CONDITION functions inside, or other functions that contain an internal check before running."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		MultiFunctionComponent* multiFunctionComponent;
@@ -158,7 +158,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "PlaySound"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Plays a sound at the ref's location."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Plays a sound at the ref's location."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		FormFunctionComponent* formComponent;
@@ -180,7 +180,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return actorValueComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "ModActorValue"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Modifies an actor value by a given value."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Modifies an actor value by a given value."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		NumericFunctionComponent* actorValueComponent;
@@ -203,7 +203,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return graphVariableComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SetGraphVariable"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Sets a graph variable."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Sets a graph variable."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		NumericFunctionComponent* graphVariableComponent;
@@ -225,7 +225,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SendAnimEvent"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Sends a behavior graph event."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Sends a behavior graph event."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		TextFunctionComponent* eventNameComponent;
@@ -248,7 +248,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "CastSpell"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Casts a spell."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Casts a spell."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		FormFunctionComponent* formComponent;
@@ -271,7 +271,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return formComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "DispelSpell"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Dispels a spell."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Dispels a spell."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		FormFunctionComponent* formComponent;
@@ -301,7 +301,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return path->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SpawnParticle"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Spawns a particle."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Spawns a particle."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		TextFunctionComponent* path;
@@ -326,7 +326,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "UnequipSlot"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Unequips an item from the specified slot."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Unequips an item from the specified slot."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 0, 0 }; }
 
 		NumericFunctionComponent* slotComponent;
@@ -350,7 +350,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override;
 
 		[[nodiscard]] RE::BSString GetName() const override { return "ModifyGraphVariable"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Modifies a graph variable."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Modifies a graph variable."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 1, 0 }; }
 
 		NumericFunctionComponent* graphVariableComponent;
@@ -372,7 +372,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return multiFunctionComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "FILENAME"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Runs functions from the contained function set only if the current replacement animation matches the specified filename."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Runs functions from the contained function set only if the current replacement animation matches the specified filename."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 1, 0 }; }
 
 		MultiFunctionComponent* multiFunctionComponent;
@@ -393,7 +393,7 @@ namespace Functions
 		[[nodiscard]] RE::BSString GetArgument() const override { return playbackSpeedComponent->GetArgument(); }
 
 		[[nodiscard]] RE::BSString GetName() const override { return "SetPlaybackSpeedMultiplier"sv.data(); }
-		[[nodiscard]] RE::BSString GetDescription() const override { return "Sets the playback speed multiplier of the current animation clip."sv.data(); }
+		[[nodiscard]] RE::BSString GetDescription() const override { return _T("Sets the playback speed multiplier of the current animation clip."); }
 		[[nodiscard]] constexpr REL::Version GetRequiredVersion() const override { return { 3, 2, 0 }; }
 
 		NumericFunctionComponent* playbackSpeedComponent;

@@ -34,27 +34,27 @@ namespace UI
 			alpha = std::lerp(0.f, 1.f, (DISPLAY_TIME - _fLingerTime) / Settings::fWelcomeBannerFadeTime);
 		}
 		ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
-		if (ImGui::Begin("Open Animation Replacer##Welcome", nullptr, windowFlags)) {
+		if (ImGui::Begin(_T("Open Animation Replacer##Welcome"), nullptr, windowFlags)) {
 			const auto titleText = std::format("Open Animation Replacer {}.{}.{}", Plugin::VERSION.major(), Plugin::VERSION.minor(), Plugin::VERSION.patch());
-			constexpr auto textA = "Press"sv;
+			const auto* textA = _T("Press");
 			std::string keyNameText;
 			if (UIManager::GetSingleton().GetSuppressMenuHotkey()) {
 				keyNameText = UICommon::GetKeyName(UIManager::GetSingleton().GetAlternativeKeyData());
 			} else {
 				keyNameText = UICommon::GetKeyName(Settings::uToggleUIKeyData);
 			}
-			constexpr auto textB = "to open the in-game UI."sv;
+			const auto* textB = _T("to open the in-game UI.");
 			const auto windowWidth = ImGui::GetWindowSize().x;
 			const auto titleTextWidth = ImGui::CalcTextSize(titleText.data()).x;
 			ImGui::SetCursorPosX((windowWidth - titleTextWidth) * 0.5f);
 			ImGui::TextUnformatted(titleText.data());
 			ImGui::Separator();
 
-			ImGui::TextUnformatted(textA.data());
+			ImGui::TextUnformatted(textA);
 			ImGui::SameLine();
 			UICommon::TextUnformattedColored(UICommon::KEY_TEXT_COLOR, keyNameText.data());
 			ImGui::SameLine();
-			ImGui::TextUnformatted(textB.data());
+			ImGui::TextUnformatted(textB);
 		}
 		ImGui::PopStyleVar();
 		ImGui::End();

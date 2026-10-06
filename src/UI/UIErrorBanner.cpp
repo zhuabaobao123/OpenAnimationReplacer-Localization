@@ -16,27 +16,27 @@ namespace UI
 
 		constexpr ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove;
 
-		if (ImGui::Begin("Open Animation Replacer##Error", nullptr, windowFlags)) {
-			constexpr auto titleText = "Open Animation Replacer"sv;
-			constexpr auto errorTextA = "Major issue detected! Open the Open Animation Replacer menu by pressing"sv;
+		if (ImGui::Begin(_T("Open Animation Replacer##Error"), nullptr, windowFlags)) {
+			const auto* titleText = _T("Open Animation Replacer");
+			const auto* errorTextA = _T("Major issue detected! Open the Open Animation Replacer menu by pressing");
 			std::string keyNameText;
 			if (UIManager::GetSingleton().GetSuppressMenuHotkey()) {
 				keyNameText = UICommon::GetKeyName(UIManager::GetSingleton().GetAlternativeKeyData());
 			} else {
 				keyNameText = UICommon::GetKeyName(Settings::uToggleUIKeyData);
 			}
-			constexpr auto errorTextB = "and click the bar at the bottom for more information."sv;
+			const auto* errorTextB = _T("and click the bar at the bottom for more information.");
 			const auto windowWidth = ImGui::GetWindowSize().x;
-			const auto titleTextWidth = ImGui::CalcTextSize(titleText.data()).x;
+			const auto titleTextWidth = ImGui::CalcTextSize(titleText).x;
 			ImGui::SetCursorPosX((windowWidth - titleTextWidth) * 0.5f);
-			ImGui::TextUnformatted(titleText.data());
+			ImGui::TextUnformatted(titleText);
 			ImGui::Separator();
 
-			UICommon::TextUnformattedColored(UICommon::ERROR_TEXT_COLOR, errorTextA.data());
+			UICommon::TextUnformattedColored(UICommon::ERROR_TEXT_COLOR, errorTextA);
 			ImGui::SameLine();
 			UICommon::TextUnformattedColored(UICommon::KEY_TEXT_COLOR, keyNameText.data());
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::ERROR_TEXT_COLOR, errorTextB.data());
+			UICommon::TextUnformattedColored(UICommon::ERROR_TEXT_COLOR, errorTextB);
 		}
 		ImGui::End();
 	}

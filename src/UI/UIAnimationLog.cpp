@@ -17,7 +17,7 @@ namespace UI
 
 		constexpr ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings;
 
-		if (ImGui::Begin("Animation Log", nullptr, windowFlags)) {
+		if (ImGui::Begin(_T("Animation Log"), nullptr, windowFlags)) {
 			if (UIManager::GetSingleton().GetRefrToEvaluate() != nullptr) {
 				auto& animationLog = AnimationLog::GetSingleton();
 				if (!animationLog.IsAnimationLogEmpty()) {
@@ -33,11 +33,11 @@ namespace UI
 						ImGui::EndTable();
 					}
 				} else {
-					UICommon::TextUnformattedDisabled("No animation log entries");
+					UICommon::TextUnformattedDisabled(_T("No animation log entries"));
 				}
 			} else {
 				ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyle().Colors[ImGuiCol_TextDisabled]);
-				ImGui::TextWrapped("No reference selected. Type in a FormID in the main window, or select a reference in the console.");
+				ImGui::TextWrapped(_T("No reference selected. Type in a FormID in the main window, or select a reference in the console."));
 				ImGui::PopStyleColor();
 			}
 			if (IsInteractable()) {
@@ -73,9 +73,9 @@ namespace UI
 		const float filterWidth = (ImGui::GetContentRegionAvail().x - style.FramePadding.x * 2 - helpMarkerWidth * 2);
 
 		ImGui::SetNextItemWidth(filterWidth);
-		ImGui::InputTextWithHint("##filter", "Filter... (Affects new entries)", &animationLog.filter);
+		ImGui::InputTextWithHint("##filter", _T("Filter... (Affects new entries)"), &animationLog.filter);
 		ImGui::SameLine();
-		UICommon::HelpMarker("Type a part of the log event type / animation name / path / mod name / submod name to filter the log results. You can use regex.");
+		UICommon::HelpMarker(_T("Type a part of the log event type / animation name / path / mod name / submod name to filter the log results. You can use regex."));
 	}
 
 	void UIAnimationLog::DrawLogEntry(AnimationLogEntry& a_logEntry)
@@ -96,59 +96,59 @@ namespace UI
 
 		switch (a_logEntry.event) {
 		case Event::kActivate:
-			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, "Activate");
+			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, _T("Activate"));
 			break;
 		case Event::kActivateSynchronized:
-			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, "Activate");
+			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, _T("Activate"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_SYNCHRONIZED_COLOR, "Paired");
+			UICommon::TextUnformattedColored(UICommon::LOG_SYNCHRONIZED_COLOR, _T("Paired"));
 			break;
 		case Event::kEcho:
-			UICommon::TextUnformattedColored(UICommon::LOG_ECHO_COLOR, "Echo");
+			UICommon::TextUnformattedColored(UICommon::LOG_ECHO_COLOR, _T("Echo"));
 			break;
 		case Event::kLoop:
-			UICommon::TextUnformattedColored(UICommon::LOG_LOOP_COLOR, "Loop");
+			UICommon::TextUnformattedColored(UICommon::LOG_LOOP_COLOR, _T("Loop"));
 			break;
 		case Event::kActivateReplace:
-			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, "Activate");
+			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, _T("Activate"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, "[Replaced]");
+			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, _T("[Replaced]"));
 			break;
 		case Event::kActivateReplaceSynchronized:
-			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, "Activate");
+			UICommon::TextUnformattedColored(UICommon::LOG_ACTIVATED_COLOR, _T("Activate"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_SYNCHRONIZED_COLOR, "Paired");
+			UICommon::TextUnformattedColored(UICommon::LOG_SYNCHRONIZED_COLOR, _T("Paired"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, "[Replaced]");
+			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, _T("[Replaced]"));
 			break;
 		case Event::kEchoReplace:
-			UICommon::TextUnformattedColored(UICommon::LOG_ECHO_COLOR, "Echo");
+			UICommon::TextUnformattedColored(UICommon::LOG_ECHO_COLOR, _T("Echo"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, "[Replaced]");
+			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, _T("[Replaced]"));
 			break;
 		case Event::kLoopReplace:
-			UICommon::TextUnformattedColored(UICommon::LOG_LOOP_COLOR, "Loop");
+			UICommon::TextUnformattedColored(UICommon::LOG_LOOP_COLOR, _T("Loop"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, "[Replaced]");
+			UICommon::TextUnformattedColored(UICommon::LOG_REPLACED_COLOR, _T("[Replaced]"));
 			break;
 		case Event::kInterrupt:
-			UICommon::TextUnformattedColored(UICommon::LOG_INTERRUPTED_COLOR, "Interrupted");
+			UICommon::TextUnformattedColored(UICommon::LOG_INTERRUPTED_COLOR, _T("Interrupted"));
 			break;
 		case Event::kPairedMismatch:
-			UICommon::TextUnformattedColored(UICommon::LOG_INTERRUPTED_COLOR, "Interrupted");
+			UICommon::TextUnformattedColored(UICommon::LOG_INTERRUPTED_COLOR, _T("Interrupted"));
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_SYNCHRONIZED_COLOR, "(Paired Mismatch)");
+			UICommon::TextUnformattedColored(UICommon::LOG_SYNCHRONIZED_COLOR, _T("(Paired Mismatch)"));
 			break;
 		}
 
 		if (a_logEntry.bVariant) {
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_VARIANT_COLOR, "[Variant]");
+			UICommon::TextUnformattedColored(UICommon::LOG_VARIANT_COLOR, _T("[Variant]"));
 		}
 
 		if (a_logEntry.event < Event::kInterrupt && a_logEntry.bInterruptible) {
 			ImGui::SameLine();
-			UICommon::TextUnformattedColored(UICommon::LOG_INTERRUPTED_COLOR, "(Interruptible)");
+			UICommon::TextUnformattedColored(UICommon::LOG_INTERRUPTED_COLOR, _T("(Interruptible)"));
 		}
 
 		if (a_logEntry.count > 1) {
@@ -157,14 +157,14 @@ namespace UI
 			ImGui::TextUnformatted(text.data());
 		}
 
-		const std::string projectText = std::format("Project: {} ", a_logEntry.projectName);
+		const std::string projectText = std::format("{}: {} ", _T("Project"), a_logEntry.projectName);
 		ImGui::SameLine(ImGui::GetContentRegionMax().x - ImGui::CalcTextSize(projectText.data()).x);
 		UICommon::TextUnformattedDisabled(projectText.data());
 
-		const std::string clipText = std::format("Clip: {} ", a_logEntry.clipName);
+		const std::string clipText = std::format("{}: {} ", _T("Clip"), a_logEntry.clipName);
 		const float clipTextWidth = ImGui::CalcTextSize(clipText.data()).x;
 
-		UICommon::TextUnformattedDisabled("Name:");
+		UICommon::TextUnformattedDisabled(_T("Name:"));
 		ImGui::SameLine();
 		UICommon::TextUnformattedEllipsis(a_logEntry.animationName.data(), nullptr, ImGui::GetContentRegionAvail().x - clipTextWidth);
 
@@ -172,13 +172,13 @@ namespace UI
 		UICommon::TextUnformattedDisabled(clipText.data());
 
 		if (a_logEntry.bOriginal) {
-			UICommon::TextUnformattedDisabled("Original animation");
+			UICommon::TextUnformattedDisabled(_T("Original animation"));
 		} else {
-			UICommon::TextUnformattedDisabled("Mod:");
+			UICommon::TextUnformattedDisabled(_T("Mod:"));
 			ImGui::SameLine();
 			ImGui::TextUnformatted(a_logEntry.modName.data());
 			ImGui::SameLine();
-			UICommon::TextUnformattedDisabled("Submod:");
+			UICommon::TextUnformattedDisabled(_T("Submod:"));
 			ImGui::SameLine();
 			ImGui::TextUnformatted(a_logEntry.subModName.data());
 			//ImGui::Text(std::format("{} / {}", a_logEntry.modName, a_logEntry.subModName).data());
@@ -188,7 +188,7 @@ namespace UI
 		auto& animationLog = AnimationLog::GetSingleton();
 		if (!animationLog.tracedEntry.bIsValid) {
 			const auto& style = ImGui::GetStyle();
-			std::string traceButtonText = "Show trace";
+			std::string traceButtonText = _T("Show trace");
 			const float traceButtonWidth = ImGui::CalcTextSize(traceButtonText.data()).x + style.FramePadding.x * 2 + style.ItemSpacing.x;
 			traceButtonText += "##" + std::to_string(reinterpret_cast<std::uintptr_t>(&a_logEntry));
 			ImGui::SameLine(ImGui::GetContentRegionMax().x - traceButtonWidth);
@@ -202,7 +202,7 @@ namespace UI
 			variantTextWidth = ImGui::CalcTextSize(a_logEntry.variantFilename.data()).x + ImGui::GetStyle().ItemSpacing.x;
 		}
 
-		UICommon::TextUnformattedDisabled("Path:");
+		UICommon::TextUnformattedDisabled(_T("Path:"));
 		ImGui::SameLine();
 		UICommon::TextUnformattedEllipsis(a_logEntry.animPath.data(), nullptr, ImGui::GetContentRegionAvail().x - variantTextWidth);
 
@@ -268,13 +268,13 @@ namespace UI
 				if (bNodeOpen) {
 					bool bHasSynchronizedConditions = !step.synchronizedConditions.empty();
 					if (bHasSynchronizedConditions) {
-						ImGui::TextUnformatted("Conditions:");
+						ImGui::TextUnformatted(_T("Conditions:"));
 					}
 					for (auto& condition : step.conditions) {
 						DrawTraceCondition(condition);
 					}
 					if (bHasSynchronizedConditions) {
-						ImGui::TextUnformatted("Synchronized conditions:");
+						ImGui::TextUnformatted(_T("Synchronized conditions:"));
 						for (auto& condition : step.synchronizedConditions) {
 							DrawTraceCondition(condition);
 						}
@@ -287,7 +287,7 @@ namespace UI
 
 		ImGui::EndChild();
 
-		if (ImGui::Button("Close trace")) {
+		if (ImGui::Button(_T("Close trace"))) {
 			auto& animationLog = AnimationLog::GetSingleton();
 			animationLog.tracedEntry = AnimationLogEntry();
 		}
@@ -297,15 +297,15 @@ namespace UI
 	{
 		switch (a_stepResult) {
 		case ReplacementTrace::Step::StepResult::kSuccess:
-			return "Success"sv;
+			return _T("Success");
 		case ReplacementTrace::Step::StepResult::kFail:
-			return "Fail"sv;
+			return _T("Fail");
 		case ReplacementTrace::Step::StepResult::kDisabled:
-			return "Disabled"sv;
+			return _T("Disabled");
 		case ReplacementTrace::Step::StepResult::kNoConditions:
-			return "No conditions"sv;
+			return _T("No conditions");
 		default:
-			return "Unknown"sv;
+			return _T("Unknown");
 		}
 	}
 

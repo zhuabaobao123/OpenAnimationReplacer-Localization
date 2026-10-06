@@ -1,5 +1,6 @@
 #include "BaseConditions.h"
 #include "OpenAnimationReplacer.h"
+#include "PCH.h"
 #include "UI/UICommon.h"
 #include "Utils.h"
 
@@ -278,9 +279,14 @@ namespace Conditions
 	std::string ConditionSet::NumTextImpl() const
 	{
 		if (Num() == 1) {
-			return "1 child condition";
+			return _T("1 child condition");
 		}
-		return std::format("{} child conditions", Num()).data();
+		auto translated = std::string(_T("{} child conditions"));
+		auto pos = translated.find("{}");
+		if (pos != std::string::npos) {
+			translated.replace(pos, 2, std::to_string(Num()));
+		}
+		return translated;
 	}
 
 	bool ConditionSet::IsDirtyRecursiveImpl() const
@@ -663,13 +669,14 @@ namespace Conditions
 		if (CanSelectScope() && a_bEditable) {
 			ImGui::SetNextItemWidth(UI::UICommon::FirstColumnWidth(a_firstColumnWidthPercent));
 			ImGui::PushID(&scope);
-			const auto currentEnumName = GetStateDataScopeName(scope);
+			const auto currentEnumName = _T(GetStateDataScopeName(scope).data());
 
-			if (ImGui::BeginCombo("State data scope##Enum value", currentEnumName.data())) {
+			const auto comboLabel = std::string(_T("State data scope")) + "##Enum value";
+			if (ImGui::BeginCombo(comboLabel.data(), currentEnumName)) {
 				for (StateDataScope i = StateDataScope::kLocal; i <= StateDataScope::kReference; i = static_cast<StateDataScope>(static_cast<int32_t>(i) << 1)) {
 					if ((GetAllowedDataScopes() & i) != StateDataScope::kNone) {
 						const bool bIsCurrent = i == scope;
-						if (ImGui::Selectable(GetStateDataScopeName(i).data(), bIsCurrent)) {
+						if (ImGui::Selectable(_T(GetStateDataScopeName(i).data()), bIsCurrent)) {
 							if (!bIsCurrent) {
 								scope = i;
 								bEdited = true;
@@ -678,27 +685,28 @@ namespace Conditions
 						if (bIsCurrent) {
 							ImGui::SetItemDefaultFocus();
 						}
-						UI::UICommon::AddTooltip(GetStateDataScopeTooltip(i).data());
+						UI::UICommon::AddTooltip(_T(GetStateDataScopeTooltip(i).data()));
 					}
 				}
 				ImGui::EndCombo();
 			}
 			ImGui::PopID();
-			UI::UICommon::AddTooltip(GetStateDataScopeTooltip(scope).data());
+			UI::UICommon::AddTooltip(_T(GetStateDataScopeTooltip(scope).data()));
 		} else {
-			const auto scopeText = std::format("State data scope: {}", GetStateDataScopeName(scope));
+			const auto scopeText = std::string(_T("State data scope: ")) + _T(GetStateDataScopeName(scope).data());
 			ImGui::TextUnformatted(scopeText.data());
-			UI::UICommon::AddTooltip(GetStateDataScopeTooltip(scope).data());
+			UI::UICommon::AddTooltip(_T(GetStateDataScopeTooltip(scope).data()));
 		}
 
 		if (CanResetOnLoopOrEcho() && scope < StateDataScope::kReplacerMod) {
 			ImGui::PushID(&bShouldResetOnLoopOrEcho);
 			ImGui::SetNextItemWidth(UI::UICommon::FirstColumnWidth(a_firstColumnWidthPercent));
 			ImGui::BeginDisabled(!a_bEditable);
-			if (ImGui::Checkbox("Reset on loop/echo##bShouldResetOnLoopOrEcho", &bShouldResetOnLoopOrEcho)) {
+			const auto checkboxLabel = std::string(_T("Reset on loop/echo")) + "##bShouldResetOnLoopOrEcho";
+			if (ImGui::Checkbox(checkboxLabel.data(), &bShouldResetOnLoopOrEcho)) {
 				bEdited = true;
 			}
-			UI::UICommon::AddTooltip("Enable if you want the data to be reset on animation clip loop or echo.");
+			UI::UICommon::AddTooltip(_T("Enable if you want the data to be reset on animation clip loop or echo."));
 			ImGui::PopID();
 			ImGui::EndDisabled();
 		}
@@ -708,11 +716,11 @@ namespace Conditions
 
 	RE::BSString ConditionStateComponent::GetArgument() const
 	{
-		std::string retString = std::string(GetStateDataScopeName(scope));
-		retString.append(" scope");
+		std::string retString = _T(GetStateDataScopeName(scope).data());
+		retString.append(_T(" scope"));
 
 		if (bShouldResetOnLoopOrEcho) {
-			retString.append(" | Reset on loop/echo"sv);
+			retString.append(_T(" | Reset on loop/echo"));
 		}
 
 		return retString.data();

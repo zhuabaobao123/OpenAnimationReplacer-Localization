@@ -4,6 +4,7 @@
 #include "Conditions.h"
 #include "DetectedProblems.h"
 #include "Functions.h"
+#include "PCH.h"
 
 namespace Functions
 {
@@ -256,9 +257,14 @@ namespace Functions
 	std::string FunctionSet::NumTextImpl() const
 	{
 		if (Num() == 1) {
-			return "1 function";
+			return _T("1 function");
 		}
-		return std::format("{} functions", Num()).data();
+		auto translated = std::string(_T("{} functions"));
+		auto pos = translated.find("{}");
+		if (pos != std::string::npos) {
+			translated.replace(pos, 2, std::to_string(Num()));
+		}
+		return translated;
 	}
 
 	bool FunctionSet::IsDirtyRecursiveImpl() const

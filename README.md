@@ -1,5 +1,15 @@
 # OpenAnimationReplacer
 
+> **Localization (汉化版)** — 本仓库是 [ersh1/OpenAnimationReplacer](https://github.com/ersh1/OpenAnimationReplacer) 的汉化版（I18N），基于 **3.2.1**。
+>
+> - 翻译外置于 `SKSE/Plugins/OpenAnimationReplacer.json`（扁平 JSON：key 为英文原文，value 为译文），找不到词条时回退英文
+> - 界面字符串通过 `src/PCH.h` 的 `#define _T(s) Localization::Translate(s)` 走翻译表
+> - 中文字体：启动时从 `SKSE/Plugins/OpenAnimationReplacer/fonts/` 读取第一个 `.ttf/.otf`
+> - 提供 en / ru / ja / ko / fr / de / es / zh-CN 八种语言（FOMOD 多语言包）
+> - `src/CMakeLists.txt` 额外加了 `/FS`（PDB 并发写入防护）
+>
+> 上游原始说明见下。
+
 A SKSE framework plugin that replaces animations depending on configurable conditions. In-game editor. Backwards compatible with more features. Extensible by other SKSE plugins. Supports SE/AE/VR. Open source.
 
 [Nexus](https://www.nexusmods.com/skyrimspecialedition/mods/92109)
